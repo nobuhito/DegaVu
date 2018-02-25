@@ -1,0 +1,11 @@
+.user-icon {
+  border-radius: 50%;
+}
+.app-main {
+  padding: 24px;
+  background-color: #f8f8f8;
+  min-height: calc(100vh - 53px);
+}
+.card {
+  cursor: pointer;
+}

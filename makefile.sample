@@ -1,0 +1,28 @@
+PROJECT_ID=XXXXXXXXXXXXX
+
+GOCMD=go
+DEV_SERVER=dev_appserver.py
+GCLOUD=gcloud
+
+GOBUILD=$(GOCMD) build
+GOCLEAN=$(GOCMD) clean
+GOTEST=$(GOCMD) test
+GOGET=$(GOCMD) get
+BINARY_NAME=histany
+BINARY_UNIX=$(BINARY_NAME)_unix
+
+all: test build
+test:
+	$(GOTEST) -v ./...
+clean:
+	$(GOCLEAN)
+	rm -f $(BINARY_NAME)
+	rm -f $(BINARY_UNIX)
+run:
+	$(DEV_SERVER) web/app.yaml
+deps:
+	$(GOGET) github.com/gorilla/mux
+deploy:
+	$(GCLOUD) app deploy web/app.yaml --project=$(PROJECT_ID) -q
+login:
+	$(GCLOUD) auth login

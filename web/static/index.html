@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+    <script src="/static/js/firebase.js"></script>
+</head>
+
+<body>
+    <div id="vue-app">
+        <app-navbar class="app-navbar" :app-name="appName">
+            <app-menu slot="end" class="app-menu" :user="user" :view-item-layouts="viewItemLayouts" :show-item-layout="showItemLayout"
+                @set-prop="setProp" />
+        </app-navbar>
+
+        <div class="app-main">
+            <div class="container is-fluid" :class="(showItemLayout=='card')? 'columns is-multiline': ''">
+                <article v-for="(item, i) in items" class="card" :class="(showItemLayout=='card')? 'column': ''" @click="selectItem(i)">
+                    <template v-if="showItemLayout=='card'">
+                        <app-cardview class="app-cardview" :item="item" />
+                    </template>
+                    <template v-if="showItemLayout=='list'">
+                        <app-listview class="app-listview" :item="item" />
+                    </template>
+                </article>
+            </div>
+        </div>
+
+        <app-addpanel class="app-addpanel" @set-prop="setProp" @add-item="addItem" :is-show="isShowAddPanel">
+            <app-addbutton class="app-addbutton" @set-prop="setProp" :is-show="(user!='')?true:false" />
+        </app-addpanel>
+
+        <app-detailpanel class="app-detailpanel" @set-prop="setProp" :detail-item="detailItem" v-show="detailItem"></app-detailpanel>
+    </div>
+
+    <div id="templates" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.1.0/webcomponents-hi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>
