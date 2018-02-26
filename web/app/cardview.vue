@@ -1,6 +1,6 @@
 <script type="text/x-template" id="app-cardview">
     <article>
-        <div v-if="!item.adCardLayoutKey" class="media" @click="$emit('select-item', i)">
+        <div v-if="!item.adCardLayoutKey" @click="$emit('select-item', i)">
             <div class="card-image">
                 <figure class="image">
                     <img :src="item.img">
