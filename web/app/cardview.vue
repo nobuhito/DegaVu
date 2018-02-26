@@ -1,6 +1,6 @@
 <script type="text/x-template" id="app-cardview">
     <article>
-        <template v-if="!item.adCardLayoutKey" class="media">
+        <div v-if="!item.adCardLayoutKey" class="media" @click="$emit('select-item', i)">
             <div class="card-image">
                 <figure class="image">
                     <img :src="item.img">
@@ -18,7 +18,7 @@
                     <a class="button is-text" @click.stop :href="item.link">{{ item.link }}</a>
                 </div>
             </div>
-        </template>
+        </div>
         <ins v-else class="adsbygoogle" style="display:block" data-ad-format="fluid"
             :data-ad-layout-key="item.adCardLayoutKey" :data-ad-client="item.adClientCode"
             :data-ad-slot="item.adSlotCode"></ins>
@@ -28,7 +28,7 @@
 <script>
     Vue.component("app-cardview", {
         template: "#app-cardview",
-        props: ["item"],
+        props: ["item", "i"],
         methods: {
         }
     });

@@ -1,6 +1,6 @@
 <script type="text/x-template" id="app-listview">
     <article class="card-content">
-        <div v-if="!item.adListLayoutKey" class="media">
+        <div v-if="!item.adListLayoutKey" class="media" @click="$emit('select-item', i)">
             <div class="media-left">
                 <figure class="image" style="max-width:120px">
                     <img :src="item.img">
@@ -26,7 +26,7 @@
 <script>
     Vue.component("app-listview", {
         template: "#app-listview",
-        props: ["item"],
+        props: ["item", "i"],
         methods: {
         }
     });
