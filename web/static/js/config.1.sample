@@ -1,0 +1,13 @@
+var config = {
+    analytics: {
+        // trackingID: "UA-XXXXXXXX-X"
+    },
+    adsense: {
+        // clientCode: "ca-pub-XXXXXXXXXXXXXXXX",
+        // slotCode: "XXXXXXXXXX",
+        // layoutKey: {
+        //     card: "XXXXXXXXX",
+        //     list: "XXXXXXXXX"
+        // }
+    }
+}

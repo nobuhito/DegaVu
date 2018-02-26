@@ -33,3 +33,41 @@
       console.log(err);
     });
 })();
+
+var appendGoogleAnalytics = function(app) {
+  try {
+    let trackingID = app.config.analytics.trackingID;
+    let script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + trackingID;
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    let gtag = function() {
+      dataLayer.push(arguments);
+    };
+    gtag("js", new Date());
+    gtag("config", trackingID);
+  } catch (e) {
+    console.log("could not get Google analytics tracking id");
+  }
+};
+
+var appendAdSense = function(app) {
+  try {
+    let script = document.createElement("script");
+    script.async = true;
+    script.src = "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+    document.head.appendChild(script);
+
+    app.items.splice(1, 0, {
+      adClientCode: app.config.adsense.clientCode,
+      adSlotCode: app.config.adsense.slotCode,
+      adListLayoutKey: app.config.adsense.layoutKey.list,
+      adCardLayoutKey: app.config.adsense.layoutKey.card
+    });
+  } catch (e) {
+    console.log("could not insert of adsense");
+    console.log(e);
+  }
+};

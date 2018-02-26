@@ -1,8 +1,8 @@
 <script type="text/x-template" id="app-listview">
-    <div class="card-content">
-        <div class="media">
+    <article class="card-content">
+        <div v-if="!item.adListLayoutKey" class="media">
             <div class="media-left">
-                <figure class="image is-64x64">
+                <figure class="image" style="max-width:120px">
                     <img :src="item.img">
                 </figure>
             </div>
@@ -17,7 +17,10 @@
                 </p>
             </div>
         </div>
-    </div>
+        <ins v-else class="adsbygoogle" style="display:block" data-ad-format="fluid"
+             :data-ad-layout-key="item.adListLayoutKey" :data-ad-client="item.adClientCode"
+             :data-ad-slot="item.adSlotCode"></ins>
+    </article>
 </script>
 
 <script>

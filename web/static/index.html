@@ -23,14 +23,14 @@
 
         <div class="app-main">
             <div class="container is-fluid" :class="(showItemLayout=='card')? 'columns is-multiline': ''">
-                <article v-for="(item, i) in items" class="card" :class="(showItemLayout=='card')? 'column': ''" @click="selectItem(i)">
+                <template v-for="(item, i) in items">
                     <template v-if="showItemLayout=='card'">
-                        <app-cardview class="app-cardview" :item="item" />
+                        <app-cardview class="app-cardview card column" :item="item" @click="selectItem(i)" />
                     </template>
                     <template v-if="showItemLayout=='list'">
-                        <app-listview class="app-listview" :item="item" />
+                        <app-listview class="app-listview card" :item="item" @click="selectItem(i)" />
                     </template>
-                </article>
+                </template>
             </div>
         </div>
 
@@ -46,6 +46,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.1.0/webcomponents-hi.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <script src="/static/js/config.js"></script>
     <script src="/static/js/script.js"></script>
 </body>
 

@@ -41,16 +41,27 @@
             // action control
             isShowAddPanel: false,
             viewItemLayouts: ["list", "card"],
-            showItemLayout: "list" // card or list
+            showItemLayout: "list", // card or list
+
+            // local config
+            config: config
         },
         mounted: function () {
             document.title = this.appName;
             let user = JSON.parse(localStorage.getItem("user"));
             if (user) { this.user = user; }
+
+            let app = this;
+            appendGoogleAnalytics(app);
+            appendAdSense(app);
+            this.refreshAds();
         },
         watch: {
             user: function (val) {
                 localStorage.setItem("user", JSON.stringify(val));
+            },
+            showItemLayout: function () {
+                this.refreshAds();
             }
         },
         methods: {
@@ -62,6 +73,11 @@
             },
             selectItem: function (i) {
                 this.detailItem = this.items[i];
+            },
+            refreshAds: function () {
+                Vue.nextTick().then(function () {
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                });
             }
         }
     });
