@@ -1,5 +1,5 @@
 // https://developers.google.com/web/fundamentals/primers/service-workers/?hl=ja
-var cacheName = "degavu-0.0.1";
+var cacheName = "degavu-0.0.2";
 var filesToCache = [
   "/",
 
@@ -18,7 +18,9 @@ var filesToCache = [
 
   "/static/js/config.js",
   "/static/js/firebase.js",
-  "/static/js/script.js"
+  "/static/js/script.js",
+
+  "/static/img/icon.png"
 ];
 
 self.addEventListener("install", e => {
