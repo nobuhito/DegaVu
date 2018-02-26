@@ -54,7 +54,11 @@ DegaVu で提供される機能については以下で確認出来ます。
    1. Firebase の Authentication を開き、`ログイン方法` から `Google` を有効にする
    1. `承認済みドメイン` に、 GAE の URL（ProjectID.appspot.com）もしくは独自ドメインを追加する
 
-1. ローカル PC から GAE へデプロイ
+1. ローカル PC での開発
+
+   1.ターミナルから `dev_appserver.py web/app.yaml` を実行して開発用サーバーを立ち上げながら各ファイル(\*.go, \*.vue, \*.html 等)を編集
+
+1) ローカル PC から GAE へデプロイ
 
    1. ターミナルで `gcloud auth login` を実行して GCP にログイン
    1. ターミナルで `gcloud app deploy web/app.yaml --project=XXXXXX` を実行して GAE にデプロイ（ProjectID は firebase.js 等を参照）
