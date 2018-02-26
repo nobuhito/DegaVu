@@ -75,9 +75,12 @@
                 this.detailItem = this.items[i];
             },
             refreshAds: function () {
-                Vue.nextTick().then(function () {
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                });
+                let adsense = this.config.adsense;
+                if (adsense.layoutKey && adsense.layoutKey[this.showItemLayout]) {
+                    Vue.nextTick().then(function () {
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    });
+                }
             }
         }
     });
