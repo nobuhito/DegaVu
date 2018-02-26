@@ -1,4 +1,5 @@
 var config = {
+    userServiceWorker: false,
     analytics: {
         // trackingID: "UA-XXXXXXXX-X"
     },

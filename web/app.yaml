@@ -15,5 +15,8 @@ handlers:
   application_readable: true
 - url: /static
   static_dir: static
+- url: /service-worker.js
+  static_files: service-worker.js
+  upload: service-worker.js
 - url: /.*
   script: _go_app

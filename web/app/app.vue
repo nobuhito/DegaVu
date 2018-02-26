@@ -55,6 +55,8 @@
             appendGoogleAnalytics(app);
             appendAdSense(app);
             this.refreshAds();
+
+            setOffLine(app);
         },
         watch: {
             user: function (val) {

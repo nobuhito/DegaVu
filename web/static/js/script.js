@@ -34,6 +34,23 @@
     });
 })();
 
+var setOffLine = function(app) {
+  try {
+    if (app.config.useOffLine && "serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then(registration => {
+          console.log(
+            "ServiceWorker registration successful with scope: ",
+            registration.scope
+          );
+        });
+    }
+  } catch (e) {
+    console.log("could not set offline");
+  }
+};
+
 var appendGoogleAnalytics = function(app) {
   try {
     let trackingID = app.config.analytics.trackingID;
