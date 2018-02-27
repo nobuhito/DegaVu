@@ -25,12 +25,12 @@ func getVueApps(w http.ResponseWriter, r *http.Request) {
 
 	filenames := []string{}
 	for _, file := range files {
-		if file.IsDir() || file.Name() == "app.vue" {
+		if file.IsDir() || file.Name() == "_app.vue" {
 			continue
 		}
 		filenames = append(filenames, strings.Replace(file.Name(), ".vue", "", 1))
 	}
-	filenames = append(filenames, "app")
+	filenames = append(filenames, "_app")
 
 	jsn, err := json.Marshal(filenames)
 	if err != nil {
