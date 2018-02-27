@@ -6,8 +6,9 @@
                     {{ appName }}
                 </div>
             </div>
-            <div class="navbar-end">
-                <slot name="end"></slot>
+            <div class="navbar-end" style="display: flex">
+                <slot name="search"></slot>
+                <slot name="menu"></slot>
             </div>
         </nav>
     </div>

@@ -36,6 +36,9 @@
                 }
             ],
 
+            searchWords: "",
+            searchedItems: null,
+
             detailItem: null,
 
             // action control
@@ -62,6 +65,17 @@
             },
             showItemLayout: function () {
                 this.refreshAds();
+            },
+            searchWords: function (val) {
+                if (val == "") {
+                    this.searchedItems = null;
+                    return;
+                }
+
+                this.searchedItems = this.items.filter(item => {
+                    let words = [item.title, item.description, item.link].join(" ").toLocaleLowerCase();
+                    return words.indexOf(val.toLocaleLowerCase()) > -1;
+                });
             }
         },
         methods: {
@@ -72,7 +86,7 @@
                 this[key] = val;
             },
             selectItem: function (i) {
-                this.detailItem = this.items[i];
+                this.detailItem = this.displayItems[i];
             },
             refreshAds: function () {
                 let adsense = this.config.adsense;
@@ -81,6 +95,9 @@
                         (adsbygoogle = window.adsbygoogle || []).push({});
                     });
                 }
+            },
+            displayItems: function () {
+                return (this.searchedItems) ? this.searchedItems : this.items;
             }
         }
     });

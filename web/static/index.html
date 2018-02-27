@@ -19,13 +19,18 @@
 <body>
     <div id="vue-app">
         <app-navbar class="app-navbar" :app-name="appName">
-            <app-menu slot="end" class="app-menu" :user="user" :view-item-layouts="viewItemLayouts" :show-item-layout="showItemLayout"
-                @set-prop="setProp" />
+            <template slot="search">
+                <app-search class="navbar-item app-search" @set-prop="setProp" />
+            </template>
+            <template slot="menu">
+                <app-menu class="navbar-item app-menu" :user="user" :view-item-layouts="viewItemLayouts" :show-item-layout="showItemLayout"
+                    @set-prop="setProp" />
+            </template>
         </app-navbar>
 
         <div class="app-main">
             <div class="container is-fluid" :class="(showItemLayout=='card')? 'columns is-multiline': ''">
-                <template v-for="(item, i) in items">
+                <template v-for="(item, i) in displayItems()">
                     <template v-if="showItemLayout=='card'">
                         <app-cardview class="app-cardview card column" :item="item" :i="i" @select-item="selectItem" />
                     </template>

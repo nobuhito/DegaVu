@@ -1,15 +1,15 @@
 <script type="text/x-template" id="app-menu">
-    <div class="navbar-item">
-        <div v-if="user==null">
+    <div>
+        <template v-if="user==null">
             <span class="icon">
                 <i class="fas fa-spiner"></i>
             </span>
-        </div>
-        <div v-else>
-            <span v-if="user==''">
+        </template>
+        <template v-else>
+            <template v-if="user==''">
                 <button class="button" @click="login()">Login</button>
-            </span>
-            <span v-else>
+            </template>
+            <template v-else>
                 <div class="dropdown is-right" :class="(isShowMenu)? 'is-active': ''">
                     <div class="dropdown-trigger">
                         <button class="button" aria-haspopup="true" aria-controls="dropdown-menu" @click="toggleMenu()">
@@ -44,8 +44,8 @@
                         </div>
                     </div>
                 </div>
-            </span>
-        </div>
+            </template>
+        </template>
     </div>
 </script>
 
