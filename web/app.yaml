@@ -21,5 +21,8 @@ handlers:
 - url: /manifest.json
   static_files: manifest.json
   upload: manifest.json
+- url: /favicon.ico
+  static_files: favicon.ico
+  upload: favicon.ico
 - url: /.*
   script: _go_app
