@@ -1,7 +1,7 @@
 {
   "name": "DegaVu",
   "short_name": "DegaVu",
-  "description": "Deploy the Golang app to AppEngine.",
+  "description": "Deploy the Golang app to AppEngine. With Vue.",
   "start_url": "/",
   "display": "standalone",
   "icons": [
