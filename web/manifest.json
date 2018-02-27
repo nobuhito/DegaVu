@@ -1,0 +1,14 @@
+{
+  "name": "DegaVu",
+  "short_name": "DegaVu",
+  "description": "Deploy the Golang app to AppEngine.",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/static/img/icon.png",
+      "type": "image/png",
+      "sizes": "200x200"
+    }
+  ]
+}

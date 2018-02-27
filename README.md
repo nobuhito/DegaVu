@@ -66,6 +66,9 @@ DegaVu で提供される機能については以下で確認出来ます。
 ## TODO
 
 * [ ] PWA の設定を追加
+  * [x] HomeScreen へのアイコン追加
+  * [ ] Push 通知
+  * [ ] OffLine 化
 * [ ] ヘッダーへ検索用フォーム追加
 
 ## Thanks

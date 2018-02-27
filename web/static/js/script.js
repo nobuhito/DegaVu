@@ -34,6 +34,12 @@
     });
 })();
 
+(function() {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js");
+  }
+})();
+
 var appendGoogleAnalytics = function(app) {
   try {
     let trackingID = app.config.analytics.trackingID;
@@ -61,13 +67,12 @@ var appendAdSense = function(app) {
     document.head.appendChild(script);
 
     app.items.splice(1, 0, {
-      adClientCode: app.config.adsense.clientCode,
-      adSlotCode: app.config.adsense.slotCode,
-      adListLayoutKey: app.config.adsense.layoutKey.list,
-      adCardLayoutKey: app.config.adsense.layoutKey.card
+      adClientCode: app.config.adsense.clientCode || "",
+      adSlotCode: app.config.adsense.slotCode || "",
+      adListLayoutKey: app.config.adsense.layoutKey.list || "",
+      adCardLayoutKey: app.config.adsense.layoutKey.card || ""
     });
   } catch (e) {
     console.log("could not insert of adsense");
-    console.log(e);
   }
 };
